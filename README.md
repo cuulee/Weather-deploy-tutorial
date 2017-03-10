@@ -13,10 +13,21 @@ Setting up environment and sample app will take 3 to 5 minutes.
 At the end, you will see dashboard of your application:
 ![screen shot 2017-03-10 at 9 52 56 am](https://cloud.githubusercontent.com/assets/10218864/23806935/83e94c58-0578-11e7-8850-351f34794a6b.png)
 
+Go to the application's URL (something like: Default-Environment.ycn9jgnj6p.us-west-2.elasticbeanstalk.com), confirm that your app is live and well:
 
 
 #Github to Semaphore
+Upload your app to Github, no need to upload node_modules, you will be able to specify build commands on Semaphore.
+This repo has a sample app, ready for deploy.
 
+Next step is authorize Semaphore to access your code on Github. 
+Follow this simple steps:
+>Create new project on Semaphore.
+>Where is your repository hosted? Select: Github
+>Let Semaphore access: Select: All repos
+>You'll be redirected to OAuth screen, click "Authorize application"
+>Select repository. Select repo for deploy from the list of all repos.
+>Select branch. Select branch for deploy from the list of all branches. I deploy from master branch in this example.
 
 #Sempahore to AWS
 
