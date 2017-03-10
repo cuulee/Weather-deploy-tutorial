@@ -9,7 +9,7 @@ Deployed app: http://default-environment.ycn9jgnj6p.us-west-2.elasticbeanstalk.c
 
 #Setting up sample app on AWS EB
 Go to the welcome page of AWS ElasticBeanstalk. At "Select a platform", choose Node and click "Launch now".
-Setting up environment and sample app will take 3 to 5 minutes.
+Setting up environment and sample app will take 2-3 minutes.
 Sample app will be created with pre-defined default settings.
 You can click "Create new application" and fine-tune settings manually.
 At the end, you will see dashboard of your application:
@@ -43,11 +43,51 @@ In the section "Preparing for deploy", we will prepare project for deploy by spe
 
 
 #Giving Semaphore AWS EB user permission
+On AWS dashboard, go to "My Security Credentials", click "Users", click "Add user":
+![screen shot 2017-03-10 at 1 56 26 pm](https://cloud.githubusercontent.com/assets/10218864/23814749/8b93fac2-0599-11e7-8e64-9bf26f5566af.png)
+
+>Create new user, click "Users" to bring list of existing users.
+
+>Click on newly created user and go to "Permissions", click "Add permissions", click "Add existing policies directly",
+from the list "Policy time" select `ElasticBeanstalkFullAccess`.
+
+> Click on newly created user, go to "Security Credentials", create new Access key ID. You will need this "Access key ID" and "Secret Access Key" later, to give Semaphore permission to your AWS EB server:
+
+![screen shot 2017-03-10 at 2 12 57 pm](https://cloud.githubusercontent.com/assets/10218864/23815228/0df1e022-059c-11e7-8a56-1bfb26cd5c46.png)
+
+In the next two sections, we will prepare Semaphore project for deploy.
+
+#Preparing project on Semaphore for deploy. Part 1
+
+>Go to Semaphore. Select existing project. Click "Add new server".
+
+>Select "AWS Elastic Beanstalk". Then select "Automattic".
+
+>Select branch, select "master" if you plan to deploy from master branch.
+
+>Next, add "Access key ID", "Secret Access" Key and "Region" (for example us-west-2).
+
+>At this point Semaphore talks to AWS. Next, select "Application name", "Environment name" and "S3 Bucket name".
+
+>Finally, give your Semaphore server name and click "Create server".
+
+#Preparing project on Semaphore for deploy. Part 2
+
+>On Semaphore, click "Project settings". Specify build settings and commands as shown below:
+![screen shot 2017-03-10 at 2 22 30 pm](https://cloud.githubusercontent.com/assets/10218864/23815458/30e2f9b2-059d-11e7-83ec-dbd13bb4fe7a.png)
 
 
+>Specify location of package.json file. If file is located at the root folder, just type package.json in the field and click "Save".
+![screen shot 2017-03-10 at 2 24 16 pm](https://cloud.githubusercontent.com/assets/10218864/23815477/4bb85f70-059d-11e7-9915-377785b0c017.png)
 
-#Preparing project on Semaphore for deploy
 
+>In your package.json file, make sure to add "start" attribute and its value:
+```
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  }
+```
 
-
-#Deploying
+>Go back to Semaphore project, initiate your Build, if Build is successful, Deploy will be initiated automatically.
+Since you've selected "Automatic" while setting up Semaphore server, every successful build will result in Deploy.
