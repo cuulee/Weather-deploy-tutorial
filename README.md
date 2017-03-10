@@ -31,7 +31,7 @@ Follow this simple steps:
 
 >Let Semaphore access: Select: All repos
 
->You'll be redirected to OAuth screen, click "Authorize application"
+>You'll be redirected to typical OAuth screen, click "Authorize application"
 
 >Select repository. Select repo for deploy from the list of all repos.
 
