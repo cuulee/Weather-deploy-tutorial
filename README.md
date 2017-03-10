@@ -1,11 +1,15 @@
 ##Deploy Node app to AWS EB from Github via Semaphore
 
 This is a sample Node app to deploy to AWS Elastic Beanstalk directly from Github.
-
 I could not find a good tutorial, so sharing here.
-Detailed instructions are coming...
 
 Deployed app: http://default-environment.ycn9jgnj6p.us-west-2.elasticbeanstalk.com/
+
+If you are looking for tutorial on how to deploy Meteor app fto Digital Ocean with Mup tool and Letsencrypt, check up this repository: https://github.com/tima101/meteor-deploy-letsencrypt
+
+If you are building Adblock Detector, check this repo: https://github.com/tima101/Native-adblock-detector
+
+If you are building Paywall/Membership software, stay tuned, we are in the process of open-sourcing one.
 
 #Setting up sample app on AWS EB
 Go to the welcome page of AWS ElasticBeanstalk. At "Select a platform", choose Node and click "Launch now".
@@ -76,10 +80,8 @@ In the next two sections, we will prepare Semaphore project for deploy.
 >On Semaphore, click "Project settings". Specify build settings and commands as shown below:
 ![screen shot 2017-03-10 at 2 22 30 pm](https://cloud.githubusercontent.com/assets/10218864/23815458/30e2f9b2-059d-11e7-83ec-dbd13bb4fe7a.png)
 
-
 >Specify location of package.json file. If file is located at the root folder, just type package.json in the field and click "Save".
 ![screen shot 2017-03-10 at 2 24 16 pm](https://cloud.githubusercontent.com/assets/10218864/23815477/4bb85f70-059d-11e7-9915-377785b0c017.png)
-
 
 >In your package.json file, make sure to add "start" attribute and its value:
 ```
